@@ -1,0 +1,263 @@
+{
+	"info": {
+		"_postman_id": "042c9403-df95-4b57-a8a5-108ca864dab4",
+		"name": "Coupon Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Coupon",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"item_ids\": [\"MLA811601014\", \"MLA811601018\", \"MLA811601022\", \"MLA811601025\", \"MLA811601027\"],\r\n\"amount\": 1500\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/coupon",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"coupon"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Coupon Ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"item_ids\": [\"MLA1\", \"MLA2\", \"MLA3\", \"MLA4\", \"MLA5\"],\r\n\"amount\": 500\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/coupon",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"coupon"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 30 Mar 2022 18:44:12 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"item_ids\": [\n        \"MLA1\",\n        \"MLA2\",\n        \"MLA4\",\n        \"MLA5\"\n    ],\n    \"total\": 480\n}"
+				},
+				{
+					"name": "Coupon Bad Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n\"amount\": 500\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/coupon",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"coupon"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 30 Mar 2022 19:57:46 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"30-03-2022 07:57:46\",\n    \"code\": \"ERR_CPN_100\",\n    \"status\": \"BAD_REQUEST\",\n    \"description\": \"An error ocurred trying to get information from body request\",\n    \"detail\": \"item_ids is required\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Coupon Stats",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8082/coupon/stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"coupon",
+						"stats"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Products Ok",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/coupon/stats",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"coupon",
+								"stats"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 30 Mar 2022 18:44:15 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"MLA3\",\n        \"quantity\": 1\n    },\n    {\n        \"id\": \"MLA5\",\n        \"quantity\": 1\n    },\n    {\n        \"id\": \"MLA4\",\n        \"quantity\": 1\n    },\n    {\n        \"id\": \"MLA1\",\n        \"quantity\": 1\n    },\n    {\n        \"id\": \"MLA2\",\n        \"quantity\": 1\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Coupon App Engine",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"item_ids\": [\"MLA811601014\", \"MLA811601018\", \"MLA811601022\", \"MLA811601025\", \"MLA811601027\"],\r\n\"amount\": 1500\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://coupon-346918.uc.r.appspot.com/coupon",
+					"protocol": "https",
+					"host": [
+						"coupon-346918",
+						"uc",
+						"r",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"coupon"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Coupon Stats App Engine",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://coupon-346918.uc.r.appspot.com/coupon/stats",
+					"protocol": "https",
+					"host": [
+						"coupon-346918",
+						"uc",
+						"r",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"coupon",
+						"stats"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
